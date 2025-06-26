@@ -13,6 +13,7 @@
     "@gsap/react": "^2.1.2",
     "@splinetool/react-spline": "^4.0.0",
     "@tailwindcss/vite": "^4.1.10",
+    "d3": "^7.9.0",
     "gsap": "^3.13.0",
     "locomotive-scroll": "^4.1.4",
     "lucide-react": "^0.523.0",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
+    "@types/d3": "^7.4.3",
     "@types/locomotive-scroll": "^4.1.4",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",

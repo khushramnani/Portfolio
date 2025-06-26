@@ -1,0 +1,15 @@
+export const techStack = [
+  { name: 'MongoDB', size: 80 },
+  { name: 'JavaScript', size: 130 },
+  { name: 'React', size: 115 },
+  { name: 'Node.js', size: 100 },
+  { name: 'Express', size: 105 },
+  { name: 'Next JS', size: 95 },
+  { name: 'FastAPI', size: 90 },
+  { name: 'Rest API', size: 120 },
+  { name: 'GraphQL', size: 85 },
+  { name: 'Convex', size: 95 },
+  { name: 'Firebase', size: 90 },
+  { name: 'PostgreSQL', size: 85 },
+  { name: 'My SQL', size: 82 },
+];

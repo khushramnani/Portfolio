@@ -7,6 +7,9 @@ import SplineRobot from '../components/SplineRobot';
 import SpreatorImg from '../assets/rip.f6d7c4dd.svg'
 
 import ProjectSection from '../components/ProjectSection';
+import { techStack } from '../TechStack';
+import TechBubble from '../components/TechBubble';
+import BubblePack from '../components/TechBubble';
 
 const Loader = lazy(() => import('../components/Loader'));
 
@@ -16,13 +19,13 @@ const Home = () => {
 
   const [bgColor, setBgColor] = useState("bg-[#f2f2f2]");
 
-      const handleHover = (color: string) => {
-  gsap.to(".global-bg", { backgroundColor: color, duration: 0.5 });
-};
+  const handleHover = (color: string) => {
+    gsap.to(".global-bg", { backgroundColor: color, duration: 0.5 });
+  };
 
-const handleLeave = () => {
-  gsap.to(".global-bg", { backgroundColor: "#f2f2f2", duration: 0.5 });
-};
+  const handleLeave = () => {
+    gsap.to(".global-bg", { backgroundColor: "#f2f2f2", duration: 0.5 });
+  };
 
 
   // Register SplitText plugin
@@ -117,13 +120,13 @@ const handleLeave = () => {
                   <span className='playwrite-it-moderna-cursive text-green-500 pl-1'>frontend</span> and <span className='playwrite-it-moderna-cursive text-green-500 pl-1'>backend</span>
                   <span className='block'>experiences.</span>
                 </span>
-              
-                </div>
+
+              </div>
               <div className='w-[60%]  flex items-center justify-center text-black'>
                 <SplineRobot />
               </div>
             </div>
-            
+
             {/* Separator positioned at bottom of about section */}
             <div className={`absolute -bottom-px left-0 right-0 h-36   overflow-hidden`}>
               <img src={SpreatorImg} alt="" className={`  w-full h-full object-cover`} />
@@ -131,40 +134,50 @@ const handleLeave = () => {
           </section>
 
           <section id="showCase" className={`global-bg h-full w-full -mt-16 relative z-10 ${bgColor} transition-colors duration-500`}>
-                  
-          <div className=" md:mx-auto">
-            <div className="flex items-center justify-start p-12 pb-0 w-full">
-              <ArrowDownRight className='w-32 h-32 secondary-color text-base font-light '/>
-            </div>
-  
-            <div id="about-help" className="flex flex-col items-normal  ">
-              <div className="p-8 pl-60">
-                <div className='w-[30%] md:mb-16 lg:mb-32 flex flex-col gap-4'>
-                <span className="cursive-normal-text secondary-color  font-light text-base ">
-                  THINGS I <span className='font-bold '>CAN</span> HELP YOU
-                  WITH.
-                  </span>
-                  <h4 className="content-text text-2xl w-full font-semibold primary-color">
-                    <span>WEB / FRONT-END DEVELOPMENT /</span>
-                    <span> BACKEND DEVELOPMENT /</span>
-                    <span> Functional web apps </span>
-                  </h4>
-                  </div>
-                <hr className="  border-black mt-4 "/>
+
+            <div className=" md:mx-auto">
+              <div className="flex items-center justify-start p-12 pb-0 w-full">
+                <ArrowDownRight className='w-32 h-32 secondary-color text-base font-light ' />
               </div>
-                
+
+              <div id="about-help" className="flex flex-col items-normal  ">
+                <div className="p-8 pl-60">
+                  <div className='w-[30%] md:mb-16 lg:mb-32 flex flex-col gap-4'>
+                    <span className="cursive-normal-text secondary-color  font-light text-base ">
+                      THINGS I <span className='font-bold '>CAN</span> HELP YOU
+                      WITH.
+                    </span>
+                    <h4 className="content-text text-2xl w-full font-semibold primary-color">
+                      <span>WEB / FRONT-END DEVELOPMENT /</span>
+                      <span> BACKEND DEVELOPMENT /</span>
+                      <span> Functional web apps </span>
+                    </h4>
+                  </div>
+                  <hr className="  border-black mt-4 " />
+                </div>
+
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
 
 
-<section id="project" className={`global-bg  w-full px-4 md:px-8 lg:px-16 py-20  ${bgColor} transition-colors duration-500`}>
+          <section id="project" className={`global-bg  w-full px-4 md:px-8 lg:px-16 py-20  ${bgColor} transition-colors duration-500`}>
 
-    <ProjectSection onHover={handleHover} onLeave={handleLeave} />
+            <ProjectSection onHover={handleHover} onLeave={handleLeave} />
 
-</section>
+          </section>
 
+<section className="bg-black w-full py-20">
+      <div className="w-full px-8 mb-10">
+        <h2 className="text-3xl font-bold text-center text-white">
+          Tech Stack I Use
+        </h2>
+      </div>
+      <div className="w-full h-[60vh] sm:h-[70vh] lg:h-[80vh]">
+        <BubblePack data={techStack} />
+      </div>
+    </section>
 
         </main>
       )}
