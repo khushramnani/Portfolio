@@ -4,13 +4,13 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 const Layout = () => {
   return (
-    <div>
+    <>
       <Header />
-      <div className="min-h-screen pt-16">
+      <div className=" pt-16">
         <Outlet />
       </div>
       <Footer />
-    </div>
+    </>
   )
 }
 

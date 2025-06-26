@@ -8,8 +8,7 @@
 
 .general-text {
   font-family: "Playfair Display SC", serif;
-  font-weight: 400;
-  font-style: normal;
+  
 }
 
 li{
@@ -39,7 +38,7 @@ li{
 .content-text {
   font-family: "Playfair", serif;
   font-optical-sizing: auto;
-  font-weight: 400;
+  /* font-weight: 400; */
   
   font-variation-settings:
     "wdth" 100;
@@ -54,7 +53,13 @@ li{
 
 @layer utilities {
   .primary-color {
-    color: #222222; /* Custom color as fallback or override */
+    color: #222222; 
+  }
+  .secondary-color {
+    color: #7B7B7B; 
+  }
+  .tertiary-color {
+    color: #F8F8F8; 
   }
 }
 

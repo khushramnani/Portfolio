@@ -8,11 +8,11 @@ function App() {
 
   return (
     <>
-      <SmoothScroll>
+      {/* <SmoothScroll> */}
         <Suspense fallback={null}>
           {children}
         </Suspense>
-      </SmoothScroll>
+      {/* </SmoothScroll> */}
     </>
   )
 }
