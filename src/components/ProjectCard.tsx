@@ -28,7 +28,7 @@ const ProjectCard = ({
   const cardRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
   const [isHovered, setIsHovered] = useState(false);
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [cursorPos, setCursorPos] = useState({ x: -1000, y: -1000 }); // Start off-screen
 
   // Preload main image
   useEffect(() => {
@@ -38,14 +38,22 @@ const ProjectCard = ({
 
   // Handle mouse movement to track cursor position
   const handleMouseMove = (e: React.MouseEvent) => {
+    if (isHovered) {
+      setCursorPos({ 
+        x: e.clientX, 
+        y: e.clientY 
+      });
+    }
+  };
+
+  const handleMouseEnter = (e: React.MouseEvent) => {
+    setIsHovered(true);
+    // Set initial cursor position on enter
     setCursorPos({ 
       x: e.clientX, 
       y: e.clientY 
     });
-  };
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
+    
     if (cardRef.current) {
       gsap.to(imgRef.current, {
         filter: 'grayscale(100%) brightness(0.5)', // darken the image
@@ -61,6 +69,9 @@ const ProjectCard = ({
 
   const handleMouseLeave = () => {
     setIsHovered(false);
+    // Move cursor off-screen when leaving
+    setCursorPos({ x: -1000, y: -1000 });
+    
     if (cardRef.current) {
       gsap.to(imgRef.current, {
         filter: 'grayscale(0%)',

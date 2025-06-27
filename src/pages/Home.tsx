@@ -168,12 +168,27 @@ const Home = () => {
 
           </section>
 
-<section className="bg-black w-full py-20">
-      <div className="w-full px-8 mb-10">
-        <h2 className="text-3xl font-bold text-center text-white">
-          Tech Stack I Use
-        </h2>
-      </div>
+<section className={` global-bg w-full py-20 h-full  -mt-16 relative z-10 ${bgColor} transition-colors duration-500`}>
+
+
+            <div className=" md:mx-auto">
+              <div className="flex items-center justify-start p-12 pb-0 w-full">
+                <ArrowDownRight className='w-32 h-32 secondary-color text-base font-light ' />
+              </div>
+
+              <div id="about-help" className="flex flex-col items-center  ">
+                <div className="p-8 pl-40 mb-16">
+                  <div className="flex items-center justify-center w-full">
+            <h2 className="text-4xl lg:text-8xl headings-regular font-bold text-center primary-color">
+              <span className="cursive-normal-text text-green-500">Tech</span> I Build With
+            </h2>
+          </div>
+                  {/* <hr className="  border-black mt-4 " /> */}
+                </div>
+
+              </div>
+            </div>
+          
       <div className="w-full h-[60vh] sm:h-[70vh] lg:h-[80vh]">
         <BubblePack data={techStack} />
       </div>

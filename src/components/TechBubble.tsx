@@ -1,11 +1,5 @@
 import * as d3 from 'd3';
 import { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
-
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
 
 type Tech = {
   name: string;
@@ -19,6 +13,8 @@ type Props = {
 type Bubble = Tech & {
   x: number;
   y: number;
+  vx?: number;
+  vy?: number;
 };
 
 const BubblePack = ({ data }: Props) => {
@@ -26,7 +22,7 @@ const BubblePack = ({ data }: Props) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [bubbles, setBubbles] = useState<Bubble[]>([]);
   const [dimensions, setDimensions] = useState({ width: 1200, height: 600 });
-  const [isVisible, setIsVisible] = useState(false);
+  const simulationRef = useRef<d3.Simulation<Bubble, undefined> | null>(null);
 
   // Get responsive scale factor based on screen width
   const getScaleFactor = (screenWidth: number) => {
@@ -53,48 +49,6 @@ const BubblePack = ({ data }: Props) => {
     return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
-  // ScrollTrigger animation setup
-  useGSAP(() => {
-    if (containerRef.current && svgRef.current) {
-      // Set initial state - bubbles scaled to 0
-      gsap.set(svgRef.current.querySelectorAll('circle'), { scale: 0 });
-      gsap.set(svgRef.current.querySelectorAll('text'), { scale: 0, opacity: 0 });
-
-      // Create ScrollTrigger animation
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
-          end: "bottom 20%",
-          toggleActions: "play none none reverse",
-          onEnter: () => setIsVisible(true),
-          onLeave: () => setIsVisible(false),
-          onEnterBack: () => setIsVisible(true),
-          onLeaveBack: () => setIsVisible(false),
-        }
-      });
-
-      // Animate bubbles entering with stagger
-      tl.to(svgRef.current.querySelectorAll('circle'), {
-        scale: 1,
-        duration: 0.8,
-        ease: "back.out(1.7)",
-        stagger: 0.1
-      })
-      .to(svgRef.current.querySelectorAll('text'), {
-        scale: 1,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power2.out",
-        stagger: 0.1
-      }, "-=0.4");
-
-      return () => {
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      };
-    }
-  }, [bubbles]); // Re-run when bubbles update
-
   useEffect(() => {
     const { width, height } = dimensions;
     const scaleFactor = getScaleFactor(width);
@@ -104,32 +58,44 @@ const BubblePack = ({ data }: Props) => {
       ...d,
       size: d.size * 2 * scaleFactor, // Apply responsive scaling
       x: Math.random() * width,
-      y: Math.random() * height,
+      y: Math.random() * (height * 0.8) + (height * 0.1), // Natural D3 positions
     }));
 
-    // Create the simulation with wider spread
+    // Create the simulation with smooth natural movement (restored old working code)
     const simulation = d3
       .forceSimulation(nodes)
       .force(
         'collide',
-        d3.forceCollide<Bubble>().radius(d => d.size / 2 + (scaleFactor * 10)).iterations(4)
+        d3.forceCollide<Bubble>().radius(d => d.size / 2 + (scaleFactor * 10)).iterations(3)
       )
-      .force('x', d3.forceX(width / 2).strength(0.005)) // Very weak center force for maximum spread
-      .force('y', d3.forceY(height / 2).strength(0.005)) // Very weak center force for maximum spread
-      .alpha(1.0)
-      .alphaDecay(0.008) // Very slow decay for more movement
+      .force('x', d3.forceX(width / 2).strength(0.005)) // Gentle centering like before
+      .force('y', d3.forceY(height * 0.6).strength(0.005))
+      // Gentle charge force for natural repulsion/movement
+      .force('charge', d3.forceManyBody().strength(-20))
+      .alpha(1.0) // Full energy for movement
+      .alphaDecay(0.002) // Slow decay to keep movement going longer
+      .alphaMin(0.001) // Lower minimum to maintain subtle movement
       .on('tick', () => {
-        // Keep bubbles within bounds
         nodes.forEach(node => {
           const radius = node.size / 2;
-          node.x = Math.max(radius, Math.min(width - radius, node.x || 0));
-          node.y = Math.max(radius, Math.min(height - radius, node.y || 0));
+          if (node.x !== undefined) node.x = Math.max(radius, Math.min(width - radius, node.x));
+          if (node.y !== undefined) node.y = Math.max(radius, Math.min(height - radius, node.y));
         });
         setBubbles([...nodes]);
       });
 
+    simulationRef.current = simulation;
+
+    // Keep the simulation running with gentle restarts (restored old working approach)
+    const keepAlive = setInterval(() => {
+      if (simulation.alpha() < 0.01) {
+        simulation.alpha(0.02).restart(); // Gentle restart for continuous floating
+      }
+    }, 5000); // Check every 5 seconds
+
     return () => {
       simulation.stop();
+      clearInterval(keepAlive);
     };
   }, [data, dimensions]);
 
@@ -143,24 +109,42 @@ const BubblePack = ({ data }: Props) => {
         className="w-full h-full"
         preserveAspectRatio="xMidYMid meet"
       >
+        <defs>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge> 
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
         {bubbles.map((bubble, i) => (
-          <g key={i} transform={`translate(${bubble.x}, ${bubble.y})`}>
+          <g 
+            key={i} 
+            transform={`translate(${bubble.x}, ${bubble.y})`}
+            className="bubble-group"
+            style={{ 
+              opacity: 1, // Always visible - no animation
+              transformOrigin: 'center center',
+              transition: 'none', // No transitions needed
+              willChange: 'transform' // Only transform will change via D3
+            }}
+          >
             <circle
               r={bubble.size / 2}
-              fill="#ec4899"
+              fill="#222222"
               stroke="#fff"
               strokeWidth={2}
-              className="hover:fill-pink-400 transition-colors duration-300 bubble-circle"
-              style={{ transformOrigin: 'center' }}
+              className="hover:fill-green-700 transition-colors duration-300 drop-shadow-lg"
+              filter="url(#glow)"
             />
             <text
               textAnchor="middle"
               alignmentBaseline="middle"
-              fontSize={Math.max(8, bubble.size / 6)} // Smaller minimum font size for mobile
+              fontSize={Math.max(8, bubble.size / 6)}
               fill="#fff"
               fontWeight="bold"
-              className="pointer-events-none select-none bubble-text"
-              style={{ transformOrigin: 'center' }}
+              className="pointer-events-none select-none drop-shadow-sm"
             >
               {bubble.name}
             </text>
