@@ -105,7 +105,7 @@ const ProjectCard = ({
       >
         <div
           ref={cardRef}
-          className="relative group w-full h-full shadow-lg bg-white rounded-4xl overflow-visible pointer-events-none"
+          className="relative group w-full h-full shadow-lg bg-white rounded-2xl md:rounded-4xl overflow-visible pointer-events-none"
         >
           <img
             ref={imgRef}
@@ -115,15 +115,15 @@ const ProjectCard = ({
             loading="lazy"
           />
           <div className="absolute gap-2 inset-0 flex flex-col items-start justify-end p-4">
-            <div className={`bg-white ml-2 border border-black p-2 min-w-[15%] max-w-[30%] rounded-full flex px-4 items-center justify-center transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={`bg-white  ml-2 border border-black p-2 min-w-[15%] max-w-[30%] rounded-full hidden md:flex px-4 items-center justify-center transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
               <span className="text-xs uppercase primary-color tracking-wider">{category}</span>
             </div>
             <div className="flex items-center justify-between gap-2">
-              <div className="bg-white border p-4 border-gray-700 rounded-full flex px-4 items-center justify-center">
-                <h3 className="text-lg primary-color font-semibold">{title}</h3>
+              <div className="bg-white border px-2 p-2 md:p-4 border-gray-700 rounded-full flex  md:px-4 items-center justify-center">
+                <h3 className="text-base md:text-lg primary-color font-semibold">{title}</h3>
               </div>
               <div className="border border-black rounded-full p-3 bg-white">
-                <ArrowUpRight className="w-8 h-8 primary-color" />
+                <ArrowUpRight className="w-4 h-4  md:w-8 md:h-8 primary-color" />
               </div>
             </div>
           </div>
