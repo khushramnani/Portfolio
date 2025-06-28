@@ -87,7 +87,7 @@ const Home = () => {
     <>
       <Loader isLoading={isLoading} />
       {!isLoading && (
-        <main className="w-screen text-white md:text-black overflow-hidden bg-black md:bg-white">
+        <main className="w-screen pt-16 text-white md:text-black overflow-hidden bg-black md:bg-white">
           <section className="flex bg-black md:bg-white mt-8 md:mt-16 flex-col px-4 md:px-16">
             {/* Mobile Layout: Creative Software Developer together, then availability + corner icon */}
             <div className="block md:hidden">
