@@ -38,7 +38,8 @@ const ProjectCard = ({
 
   // Handle mouse movement to track cursor position
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (isHovered) {
+    // Only handle mouse move on desktop
+    if (isHovered && window.innerWidth >= 1024) {
       setCursorPos({ 
         x: e.clientX, 
         y: e.clientY 
@@ -47,23 +48,29 @@ const ProjectCard = ({
   };
 
   const handleMouseEnter = (e: React.MouseEvent) => {
-    setIsHovered(true);
-    // Set initial cursor position on enter
-    setCursorPos({ 
-      x: e.clientX, 
-      y: e.clientY 
-    });
+    // Only enable hover effects on desktop
+    if (window.innerWidth >= 1024) {
+      setIsHovered(true);
+      // Set initial cursor position on enter
+      setCursorPos({ 
+        x: e.clientX, 
+        y: e.clientY 
+      });
+    }
     
     if (cardRef.current) {
       gsap.to(imgRef.current, {
-        filter: 'grayscale(100%) brightness(0.5)', // darken the image
+        filter: window.innerWidth >= 1024 ? 'grayscale(100%) brightness(0.5)' : 'grayscale(0%)', // Only darken on desktop
         duration: 0.3,
         ease: 'power2.out',
         opacity: 1, 
         zIndex: 100,
         transition: 'opacity 0.2s ease, filter 0.2s ease',
       });
-      onHover(hoverBg);
+      // Only call onHover on desktop to prevent background color changes on mobile
+      if (window.innerWidth >= 1024) {
+        onHover(hoverBg);
+      }
     }
   };
 
@@ -78,7 +85,10 @@ const ProjectCard = ({
         duration: 0.3,
         ease: 'power2.out',
       });
-      onLeave();
+      // Only call onLeave on desktop
+      if (window.innerWidth >= 1024) {
+        onLeave();
+      }
     }
   };
 
@@ -119,7 +129,8 @@ const ProjectCard = ({
           </div>
         </div>
       </NavLink>
-      {isHovered && <CustomCursor images={images} liveLink={liveLink} x={cursorPos.x} y={cursorPos.y} />}
+      {/* Only show CustomCursor on desktop screens */}
+      {isHovered && window.innerWidth >= 1024 && <CustomCursor images={images} liveLink={liveLink} x={cursorPos.x} y={cursorPos.y} />}
     </>
   );
 };

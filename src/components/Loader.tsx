@@ -49,7 +49,7 @@ const Loader = ({ isLoading }: { isLoading: boolean }) => {
     }, [isLoading]);
   return (
 <>
-<div className='h-screen loader-container bg-black flex items-center flex-col justify-between w-screen fixed top-0 left-0 z-20' >
+<div className='h-screen loader-container bg-black flex items-center flex-col justify-between w-screen fixed top-0 left-0 z-[60]' >
     <div className='loader h-[90vh] flex items-center justify-center w-full'>
         <div className='loader-inner flex flex-col text-white gap-3 items-center justify-center'>
             
@@ -70,7 +70,7 @@ const Loader = ({ isLoading }: { isLoading: boolean }) => {
     <Loader2Icon className={isLoading ? "animate-spin text-white w-10 h-10" : ""}/>
     </div>
 </div>
-    <div className='h-screen green-screen bg-green-500 ' style={{position: 'fixed', top: '100vh', left: 0, width: '100vw', zIndex: 10, height: '100vh'}}>
+    <div className='h-screen green-screen bg-green-500 ' style={{position: 'fixed', top: '100vh', left: 0, width: '100vw', zIndex: 55, height: '100vh'}}>
         
     </div>
 

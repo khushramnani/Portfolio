@@ -1,14 +1,21 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { projects } from "../components/projectsection/projectData";
 import ProjectDetailCard from "../components/projectsection/ProjectDetailCard";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { useTheme } from "../contexts/ThemeContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Project = () => {
   const containerRef = useRef(null);
+  const { setIsDarkBackground } = useTheme();
+
+  // Project page has white background, so text should be dark
+  useEffect(() => {
+    setIsDarkBackground(false);
+  }, [setIsDarkBackground]);
 
   useGSAP(() => {
     const sections = gsap.utils.toArray(".project-card");
@@ -30,7 +37,7 @@ const Project = () => {
 
   return (
     <main className="bg-white w-full h-full">
-      <section className="px-4 md:px-16 lg:px-32 mt-16">
+      <section className="px-4 md:px-16 lg:px-32 mt-20 md:mt-32">
         <div className="flex flex-col items-start justify-start">
           <h1 className="text-4xl lg:text-7xl font-bold">
             My <span className="text-green-500 merienda-cursive">Best</span> Creations
@@ -41,11 +48,11 @@ const Project = () => {
         </div>
       </section>
 
-      <section ref={containerRef} className="px-4 md:px-16 lg:px-32 py-20">
+      <section ref={containerRef} className="px-4 md:px-16 lg:px-32 py-10 md:py-20">
         {projects.map((project) => (
           <ProjectDetailCard key={project.id} prop={project} />
         ))}
-        <div className="h-[50vh]"></div>
+        <div className="h-[40vh] md:h-[50vh]"></div>
       </section>
     </main>
   );

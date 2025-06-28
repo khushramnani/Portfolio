@@ -1,10 +1,18 @@
 import { useParams } from "react-router-dom";
 import { projects } from "../components/projectsection/projectData";
 import ProjectDetailCard from "../components/projectsection/ProjectDetailCard";
+import { useEffect } from "react";
+import { useTheme } from "../contexts/ThemeContext";
 
 const ProjectDetail = () => {
   const { name } = useParams();
   const project = projects.find(p => p.name === name);
+  const { setIsDarkBackground } = useTheme();
+
+  // ProjectDetail page has white background, so text should be dark
+  useEffect(() => {
+    setIsDarkBackground(false);
+  }, [setIsDarkBackground]);
 
   if (!project) {
     return <div className="p-8">Project not found</div>;
