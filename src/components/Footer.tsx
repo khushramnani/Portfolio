@@ -8,9 +8,9 @@ const Footer = () => {
       <footer className='bg-black gap-4 md:gap-8 rounded-t-4xl flex flex-col  py-4 md:py-6 px-4 md:px-16'>
         <nav className='flex flex-col md:flex-row justify-between items-center h-full text-white gap-4 md:gap-0'>
           <div className="flex flex-row items-center gap-2 md:gap-4 text-lg md:text-xl content-text">
-            <NavLink className={'hover:text-green-500 transition-colors duration-300'} to={""}><li>Home</li></NavLink>
-            <NavLink className={'hover:text-green-500 transition-colors duration-300'} to={""}><li className="">Projects</li></NavLink>
-            <NavLink className={'hover:text-green-500 transition-colors duration-300'} to={""}><li>Resume</li></NavLink>
+            <NavLink className={'hover:text-green-500 transition-colors duration-300'} to={"/"}><li>Home</li></NavLink>
+            <NavLink className={'hover:text-green-500 transition-colors duration-300'} to={"/projects"}><li className="">Projects</li></NavLink>
+            <a className={'hover:text-green-500 transition-colors duration-300'} href="/src/assets/Resume@khushramnani.pdf" download="Resume_Khush_Ramnani.pdf"><li>Resume</li></a>
           </div>
           <div id="socials" className='flex justify-center items-center gap-4 mt-0 md:mt-4'>
             <NavLink to={""} ><Linkedin className="w-5 h-5 md:w-6 md:h-6 text-white hover:text-green-500 hover:scale-110 transition-all duration-300"/></NavLink>
@@ -24,14 +24,17 @@ const Footer = () => {
             <h1 className="text-2xl md:text-3xl lg:text-4xl headings-regular tertiary-color font-bold leading-tight">
               Ready to Bring Your <span className="text-green-500 merienda-cursive">Vision</span> to Life?
             </h1>
-            <span className="text-center text-sm md:text-lg general-text text-gray-400 leading-relaxed px-2 md:px-0">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt esse facilis rem obcaecati eum molestias ducimus impedit, explicabo magnam maiores? Iure minus ad nemo eos voluptatibus est ex nobis repudiandae.
+            <span className="text-center text-sm md:text-lg content-text text-gray-400 leading-relaxed px-2 md:px-0">
+              Let's collaborate to turn your ideas into impactful digital experiences. Whether you need a stunning website, a robust web app, or creative solutions—I'm ready to help you stand out. Reach out and let's build something amazing together!
             </span>
           </div>
           
-          <button className="mt-6 md:mt-8 bg-white text-black py-3 px-6 md:py-4 md:px-8 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 text-sm md:text-base">
-            Hire Me
-          </button>
+            <a
+              href="mailto:khushramnani@gmail.com"
+              className="mt-6 md:mt-8 bg-white text-black py-3 px-6 md:py-4 md:px-8 rounded-full font-semibold hover:bg-green-500 hover:text-white hover:scale-105 shadow-md hover:shadow-lg transition-all duration-300 text-sm md:text-base inline-block text-center"
+            >
+              Hire Me
+            </a>
         </div>
 
         <div className="pt-2 md:pt-4 flex items-center justify-center">

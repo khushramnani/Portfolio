@@ -1,4 +1,3 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
 interface ProjectDetailCardProps {
@@ -18,7 +17,7 @@ const ProjectDetailCard = ({ prop }: ProjectDetailCardProps) => {
     return (
         <div className=' w-full h-screen px-8   bg-white '>
             <div className='project-card cursor-pointer flex flex-col items-start ' onClick={handleClick}>
-            <img src={prop.image} className='border border-black w-full min-h-[50vh] md:max-h-[80vh] rounded-md' alt="Project Image" />
+            <img src={prop.image} className='border border-black w-full min-h-[50vh] md:min-h-[70vh] md:max-h-[80vh] rounded-md' alt="Project Image" />
             
             <div className='md:pt-4 bg-white  w-full md:max-w-[70%]  p-4'>
                 <div className='flex flex-col items-start justify-start h-full'>

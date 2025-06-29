@@ -1,7 +1,7 @@
 import gsap from 'gsap';
 import { ArrowUpRight } from 'lucide-react';
 import { useRef, useEffect, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CustomCursor from '../components/CustomCursor'; // Import the new CustomCursor component
 
 type Props = {
@@ -115,7 +115,7 @@ const ProjectCard = ({
       >
         <div
           ref={cardRef}
-          className="relative group w-full h-full shadow-lg bg-white rounded-2xl md:rounded-4xl overflow-visible pointer-events-none"
+          className="relative group w-full h-full shadow-lg bg-white rounded-4xl md:rounded-4xl overflow-visible pointer-events-none"
         >
           <img
             ref={imgRef}

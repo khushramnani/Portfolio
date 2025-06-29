@@ -2,7 +2,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { projects } from "../components/projectsection/projectData";
 import { useEffect } from "react";
 import { useTheme } from "../contexts/ThemeContext";
-import { ArrowUpRight, CornerDownLeft, CornerUpLeft, Github } from "lucide-react";
+import { ArrowUpRight, CornerUpLeft, Github } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 const ProjectDetail = () => {

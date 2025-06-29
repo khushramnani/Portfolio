@@ -16,7 +16,8 @@ const Loader = lazy(() => import('../components/Loader'));
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const typedRef = useRef<HTMLSpanElement>(null);
+  const typedRefMobile = useRef<HTMLSpanElement>(null);
+  const typedRefDesktop = useRef<HTMLSpanElement>(null);
   const { setIsDarkBackground } = useTheme();
 
   const handleHover = (color: string) => {
@@ -58,34 +59,47 @@ const Home = () => {
 
   useGSAP(() => {
     const mainElement = document.getElementById('main');
-    gsap.fromTo(mainElement, { opacity: 0 , y: 100 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" });
-    }, []);
+    if (mainElement) {
+      gsap.fromTo(mainElement, { opacity: 0 , y: 100 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" });
+    }
+  }, []);
   
   useGSAP(
     () => {
       
 
-      if (!isLoading && typedRef.current) {
-        // Create SplitText instance
-        const split = new SplitText(typedRef.current, {
-          type: 'chars',
-          charsClass: 'split-char',
-        });
+      if (!isLoading) {
+        // Animate mobile version if it exists
+        if (typedRefMobile.current) {
+          const splitMobile = new SplitText(typedRefMobile.current, {
+            type: 'chars',
+            charsClass: 'split-char',
+          });
+          gsap.set(splitMobile.chars, { opacity: 0 });
+          gsap.to(splitMobile.chars, {
+            opacity: 1,
+            duration: .80,
+            stagger: 0.1,
+            delay: 2,
+            ease: 'none',
+          });
+        }
 
-        
-
-
-        gsap.set(split.chars, { opacity: 0 });
-
-
-        gsap.to(split.chars, {
-          opacity: 1,
-          duration: .80,
-          stagger: 0.1, // Adjust for typing speed
-          delay: 2,
-          ease: 'none',
-
-        });
+        // Animate desktop version if it exists
+        if (typedRefDesktop.current) {
+          const splitDesktop = new SplitText(typedRefDesktop.current, {
+            type: 'chars',
+            charsClass: 'split-char',
+          });
+          gsap.set(splitDesktop.chars, { opacity: 0 });
+          gsap.to(splitDesktop.chars, {
+            opacity: 1,
+            duration: .80,
+            stagger: 0.1,
+            delay: 2,
+            ease: 'none',
+          });
+        }
       }
     },
     { dependencies: [isLoading] }
@@ -107,7 +121,7 @@ const Home = () => {
                 <div className="flex flex-col items-center  w-full justify-center">
                   <span className="flex items-center justify-center">
                     {!isLoading && (
-                      <span ref={typedRef} className="text-nowrap leading-[0.8] text-[12vw] font-bold text-green-400 cursive-normal-text text-center">
+                      <span ref={typedRefMobile} className="text-nowrap leading-[0.8] text-[12vw] font-bold text-green-400 cursive-normal-text text-center">
                         Software
                       </span>
                     )}
@@ -167,7 +181,7 @@ const Home = () => {
                   <div className="flex flex-row items-center pl-20 gap-8">
                     <span className="flex items-center">
                       {!isLoading && (
-                        <span ref={typedRef} className="text-nowrap text-[6.5vw] font-bold text-green-800 cursive-normal-text text-center">
+                        <span ref={typedRefDesktop} className="text-nowrap text-[6.5vw] font-bold text-green-800 cursive-normal-text text-center">
                           Software
                         </span>
                       )}

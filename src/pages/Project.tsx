@@ -74,7 +74,7 @@ const Project = () => {
         </div>
       </section>
 
-      <section ref={containerRef} className=" flex flex-col md:gap-16 md:px-16 md:py-20">
+      <section ref={containerRef} className=" flex flex-col md:gap-16 md:px-16 md:py-10">
         {projects.map((project) => (
           <ProjectDetailCard key={project.id} prop={project} />
         ))}

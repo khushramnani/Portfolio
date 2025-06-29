@@ -36,20 +36,17 @@ const Header = () => {
           <span className={`absolute -bottom-1 left-0 w-0 h-0.5 ${isDarkBackground ? 'bg-green-400' : 'bg-green-600'} transition-all duration-300 group-hover:w-full`}></span>
         </NavLink>
         
-        <NavLink 
-          to="/about" 
-          className={({ isActive }) => 
-            `text-sm md:text-lg ${textColor} relative group transition-colors duration-300 ${
-              isActive ? (isDarkBackground ? 'text-green-400' : 'text-green-600') : hoverColor
-            }`
-          }
+        <a 
+          href="/src/assets/Resume@khushramnani.pdf"
+          download="Resume_Khush_Ramnani.pdf"
+          className={`text-sm md:text-lg ${textColor} relative group transition-colors duration-300 ${hoverColor}`}
         >
           Resume
           <span className={`absolute -bottom-1 left-0 w-0 h-0.5 ${isDarkBackground ? 'bg-green-400' : 'bg-green-600'} transition-all duration-300 group-hover:w-full`}></span>
-        </NavLink>
+        </a>
         
-        <NavLink 
-          to="/contact" 
+        {/* <NavLink 
+          to="#" 
           className={({ isActive }) => 
             `text-sm md:text-lg ${textColor} relative group transition-colors duration-300 ${
               isActive ? (isDarkBackground ? 'text-green-400' : 'text-green-600') : hoverColor
@@ -58,7 +55,14 @@ const Header = () => {
         >
           Contact
           <span className={`absolute -bottom-1 left-0 w-0 h-0.5 ${isDarkBackground ? 'bg-green-400' : 'bg-green-600'} transition-all duration-300 group-hover:w-full`}></span>
-        </NavLink>
+        </NavLink> */}
+        <a 
+          href="mailto:khushramnani@gmail.com"
+          className={`text-sm md:text-lg ${textColor} relative group transition-colors duration-300 ${hoverColor}`}
+        >
+          Contact
+          <span className={`absolute -bottom-1 left-0 w-0 h-0.5 ${isDarkBackground ? 'bg-green-400' : 'bg-green-600'} transition-all duration-300 group-hover:w-full`}></span>
+        </a>
       </div>
     </nav>
   )

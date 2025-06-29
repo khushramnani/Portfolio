@@ -1,7 +1,7 @@
 
 import { useRoutes } from 'react-router-dom';
 import { routes } from './routes';
-import SmoothScroll from './components/SmoothScroll';
+import { ReactLenis } from 'lenis/react'
 import { Suspense } from 'react';
 import { ThemeProvider } from './contexts/ThemeContext';
 
@@ -10,11 +10,18 @@ function App() {
 
   return (
     <ThemeProvider>
-      {/* <SmoothScroll> */}
+      <ReactLenis root options={{ 
+        lerp: 0.1,
+        duration: 1.2,
+        smoothWheel: true,
+        wheelMultiplier: 1,
+        touchMultiplier: 2,
+        infinite: false
+      }}>
         <Suspense fallback={null}>
           {children}
         </Suspense>
-      {/* </SmoothScroll> */}
+      </ReactLenis>
     </ThemeProvider>
   )
 }

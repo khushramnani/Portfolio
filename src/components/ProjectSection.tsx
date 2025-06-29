@@ -1,6 +1,5 @@
 import ProjectCard from '../components/ProjectCard';
 import { MoveDownLeft } from 'lucide-react';
-import ProjectPrev1 from '../assets/AnonovaPreview.png';
 import {projects} from '../components/projectsection/projectData'
 const ProjectSection = ({ onHover, onLeave }: { onHover: (color: string) => void; onLeave: () => void }) => {
   // Example array of images for each project
