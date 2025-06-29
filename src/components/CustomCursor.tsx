@@ -85,7 +85,7 @@ const CustomCursor = ({ images, liveLink, x, y }: CustomCursorProps) => {
           {/* SmallCard */}
           <div
             ref={cardRef}
-            className="fixed mt-4 z-[108] w-[20vw] rounded-md min-h-[30vh] shadow-xl ml-4  overflow-hidden pointer-events-none"
+            className="fixed mt-4 z-[108] w-[20vw] rounded-md max-h-[50vh] shadow-xl ml-4  overflow-hidden pointer-events-none"
           >
             <span className='w-full -mt-2 bg-gray-200/10 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40  flex items-start justify-start text-start px-1 text-gray-300'>ooo</span>
             <img

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { lazy, useEffect, useRef, useState } from "react";
 import { projects } from "../components/projectsection/projectData";
 import ProjectDetailCard from "../components/projectsection/ProjectDetailCard";
 import gsap from "gsap";
@@ -8,14 +8,22 @@ import { useTheme } from "../contexts/ThemeContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const Loader = lazy(() => import('../components/Loader'));
+
 const Project = () => {
   const containerRef = useRef(null);
   const { setIsDarkBackground } = useTheme();
+  const [isLoading, setIsLoading] = useState(true);
 
   // Project page has white background, so text should be dark
   useEffect(() => {
     setIsDarkBackground(false);
   }, [setIsDarkBackground]);
+
+    useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useGSAP(() => {
     const cards = gsap.utils.toArray(".project-card");
@@ -41,7 +49,17 @@ const Project = () => {
   }, []);
 
   return (
-    <main className="bg-white w-full h-full">
+    <>
+    <Loader 
+        isLoading={isLoading} 
+        mainText="Khush's" 
+        secondText=""
+        waitingText="Projects"
+        highlightSecondText={false}
+        highlightWaitingText={true}
+      />
+
+    {<main className="bg-white w-full h-full">
       <section className="px-4 md:px-16 mb-8 md:mb:0 lg:px-32 mt-16 md:mt-32">
         <div className="flex flex-col items-start justify-start">
           <h1 className="text-3xl md:text-4xl lg:text-7xl font-bold leading-tight">
@@ -59,7 +77,8 @@ const Project = () => {
         ))}
         <div className=" h-[0vh] md:h-[50vhvh]"></div>
       </section>
-    </main>
+    </main>}
+    </>
   );
 };
 

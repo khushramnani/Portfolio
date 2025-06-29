@@ -4,29 +4,45 @@ import gsap from "gsap"
 import { Loader2Icon } from "lucide-react";
 import  { useEffect, useState, useRef } from "react";
 
-const Loader = ({ isLoading }: { isLoading: boolean }) => {
-    const [showIsA, setShowIsA] = useState(false);
-    const isARef = useRef<HTMLSpanElement>(null);
+interface LoaderProps {
+    isLoading: boolean;
+    mainText?: string;
+    secondText?: string;
+    waitingText?: string;
+    highlightSecondText?: boolean;
+    highlightWaitingText?: boolean;
+}
+
+const Loader = ({ 
+    isLoading, 
+    mainText = "Khush", 
+    secondText = "Ramnani",
+    waitingText = "is a",
+    highlightSecondText = true,
+    highlightWaitingText = false
+}: LoaderProps) => {
+    const [showWaitingText, setShowWaitingText] = useState(false);
+    const waitingTextRef = useRef<HTMLSpanElement>(null);
 
     useEffect(() => {
         if (!isLoading) {
-            // After loading is complete, show "Is a" after 0.7s
-            const timer = setTimeout(() => setShowIsA(true), 700);
+            // After loading is complete, show waiting text after 0.7s
+            const timer = setTimeout(() => setShowWaitingText(true), 700);
             return () => clearTimeout(timer);
         } else {
-            setShowIsA(false);
+            setShowWaitingText(false);
         }
     }, [isLoading]);
 
     useGSAP(() => {
-        if (showIsA && isARef.current) {
+        if (showWaitingText && waitingTextRef.current) {
             gsap.fromTo(
-                isARef.current,
+                waitingTextRef.current,
                 { x: 40, opacity: 0 },
                 { x: 0, opacity: 1, duration: 0.4, ease: 'power2.out' }
             );
         }
-    }, [showIsA]);
+    }, [showWaitingText]);
 
     useGSAP(() => {
         if (!isLoading) {
@@ -54,13 +70,13 @@ const Loader = ({ isLoading }: { isLoading: boolean }) => {
         <div className='loader-inner flex flex-col text-white gap-3 items-center justify-center'>
             
             <span className="headings-regular space-x-1 gap-2 text-5xl flex relative" >
-                <span>Khush <span className={`${showIsA? 'playwrite-it-moderna-cursive italic' : "general-text" }  text-green-500 text-5xl`}>Ramnani</span></span>
+                <span>{mainText} <span className={`${highlightSecondText ? 'playwrite-it-moderna-cursive italic' : "general-text" }  text-green-500 text-5xl`}>{secondText? secondText : ""}</span></span>
                 <span
-                  className="inline-block"
-                  ref={isARef}
+                  className={`inline-block ${highlightWaitingText ? 'playwrite-it-moderna-cursive italic text-green-500' : 'text-white'}`}
+                  ref={waitingTextRef}
                   style={{ opacity: 0 }}
                 >
-                  {' '}is a
+                  {' '}{waitingText}
                 </span>
             </span>
             

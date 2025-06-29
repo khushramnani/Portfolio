@@ -12,4 +12,10 @@ export const techStack = [
   { name: 'Firebase', size: 90 },
   { name: 'PostgreSQL', size: 85 },
   { name: 'My SQL', size: 82 },
+  { name: 'TypeScript', size: 90 },
+  { name: 'HTML', size: 50 },
+  { name: 'CSS', size: 50 },
+  { name: 'Tailwind CSS', size: 70 },
+  { name: 'Git', size: 80 },
+  { name: 'GSAP', size: 70 },
 ];

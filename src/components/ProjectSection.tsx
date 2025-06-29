@@ -5,16 +5,36 @@ import ProjectPrev1 from '../assets/AnonovaPreview.png';
 const ProjectSection = ({ onHover, onLeave }: { onHover: (color: string) => void; onLeave: () => void }) => {
   // Example array of images for each project
   const projectImages = {
+    anonova: [
+      "https://res.cloudinary.com/dql9uwmjx/image/upload/v1751192138/hero_vdqulr.png",
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190095/signup_bo3wln.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190089/dashboard_dwm6sh.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190093/userlink_yqwxrf.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751192140/No_of_users_in_48_hr_i7uxpp.png'
+    ],
     zuno: [
-      ProjectPrev1,
-      'https://images.unsplash.com/photo-1516321318423-ffd391d2a921',
-      'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
+      "https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190008/what_yrlayz.png",
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190000/thinkpad_ir3qdl.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190005/try2_yp11cz.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190003/try1_rw6mdd.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190001/pricingpage_ielont.png',
     ],
-    groovr: [
-      'https://images.unsplash.com/photo-1511671786161-6e234e20e504',
-      'https://images.unsplash.com/photo-1461749280684-dccba630e2f6',
-      'https://images.unsplash.com/photo-1516321318423-ffd391d2a921',
+    twoeightmedia: [
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/c_crop,ar_1:1/v1751183381/coming-soon_qy8xfc.png',
     ],
+    pagecrafter: [
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190051/main-landing_yvlp00.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190045/HTW_c0vpsc.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190049/circle-landing_mjhjdk.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190047/BuildArea2_y2ujfl.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190054/BuildArea_upukud.png'
+    ],
+    garvo: [
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190069/Screenshot_2025-06-29_130135_kzlchn.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190066/Screenshot_2025-06-29_125954_h8aprj.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190064/Screenshot_2025-06-29_130057_mualqr.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190063/Screenshot_2025-06-29_130223_u9jyyu.png'
+    ]
   };
 
   return (
@@ -39,24 +59,24 @@ const ProjectSection = ({ onHover, onLeave }: { onHover: (color: string) => void
         <div className="flex flex-col lg:flex-row w-full items-center justify-center lg:justify-around gap-8 mb-8 md:mb-16">
           <div className="h-[50vh] md:h-[70vh] lg:h-[90vh] w-full lg:w-[50%]">
             <ProjectCard
-              title="Zuno – AI Web App Builder"
-              image={ProjectPrev1}
-              images={projectImages.zuno}
-              category="AI, SaaS"
+              title="Anonova"
+              image={"https://res.cloudinary.com/dql9uwmjx/image/upload/v1751174284/Project_Mokups_htsjvq.png"}
+              images={projectImages.anonova}
+              category="Web App, AI"
               liveLink="anonova-pi.vercel.app"
-              hoverBg="#e0f7fa"
+              hoverBg="#C1C6D7"
               onHover={onHover}
               onLeave={onLeave}
             />
           </div>
           <div className="h-[50vh] md:h-[60vh] lg:h-[50vh] w-full lg:w-[40%] lg:mt-40">
             <ProjectCard
-              title="Groovr – Music Streaming App"
-              image="https://images.unsplash.com/photo-1511671786161-6e234e20e504"
-              images={projectImages.groovr}
-              category="Music, Frontend"
-              liveLink="https://groovr.vercel.app"
-              hoverBg="#f3e8ff"
+              title="28-Media – Digital Marketing Agency"
+              image="https://res.cloudinary.com/dql9uwmjx/image/upload/v1751174708/display.835f9d62_bqulbs.png"
+              images={projectImages.twoeightmedia}
+              category="Website"
+              liveLink="https://28-media.com"
+              hoverBg="#FF99A8"
               onHover={onHover}
               onLeave={onLeave}
             />
@@ -68,10 +88,11 @@ const ProjectSection = ({ onHover, onLeave }: { onHover: (color: string) => void
           <div className="h-[50vh] md:h-[70vh] lg:h-[80vh] w-full lg:w-[60%]">
             <ProjectCard
               title="Zuno – AI Web App Builder"
-              image="https://images.unsplash.com/photo-1516321318423-ffd391d2a921"
+              image={'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751180667/4_yq3tfy.png'}
               images={projectImages.zuno}
               category="AI, SaaS"
-              hoverBg="#e0f7fa"
+              liveLink="anonova-pi.vercel.app"
+              hoverBg="#DBCABD"
               onHover={onHover}
               onLeave={onLeave}
             />
@@ -82,25 +103,27 @@ const ProjectSection = ({ onHover, onLeave }: { onHover: (color: string) => void
         <div className="flex flex-col lg:flex-row w-full items-center justify-center lg:justify-around gap-8">
           <div className="h-[50vh] md:h-[60vh] lg:h-[60vh] w-full lg:w-[40%] lg:mt-96 order-2 lg:order-1">
             <ProjectCard
-              title="Groovr – Music Streaming App"
-              image="https://images.unsplash.com/photo-1511671786161-6e234e20e504"
-              images={projectImages.groovr}
-              category="Music, Frontend"
-              liveLink="https://groovr.vercel.app"
-              hoverBg="#f3e8ff"
+              title="Garvo Panoptic"
+              image={'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751192879/6_riv4le.png'}
+              images={projectImages.garvo}
+              category="Static Website"
+              liveLink="GarvoPanoptic.com"
+              // hoverBg="#e0f7fa"
+              hoverBg="#FFBC99"
               onHover={onHover}
               onLeave={onLeave}
             />
           </div>
 
           <div className="h-[50vh] md:h-[70vh] lg:h-[80vh] w-full lg:w-[50%] order-1 lg:order-2">
+            
             <ProjectCard
-              title="Zuno – AI Web App Builder"
-              image={ProjectPrev1}
-              images={projectImages.zuno}
-              category="AI, SaaS"
-              liveLink="anonova-pi.vercel.app"
-              hoverBg="#e0f7fa"
+              title="PageCrafter"
+              image="https://res.cloudinary.com/dql9uwmjx/image/upload/v1751180726/5_gl6mr0.png"
+              images={projectImages.pagecrafter}
+              category="Website Builder"
+              // liveLink=""
+              hoverBg="#E5B5B3"
               onHover={onHover}
               onLeave={onLeave}
             />

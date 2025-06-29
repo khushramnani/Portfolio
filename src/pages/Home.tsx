@@ -56,7 +56,7 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Typewriter animation
+  
   useGSAP(
     () => {
       if (!isLoading && typedRef.current) {

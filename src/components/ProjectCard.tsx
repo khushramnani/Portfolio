@@ -122,7 +122,7 @@ const ProjectCard = ({
               <div className="bg-white border px-2 p-2 md:p-4 border-gray-700 rounded-full flex  md:px-4 items-center justify-center">
                 <h3 className="text-base md:text-lg primary-color font-semibold">{title}</h3>
               </div>
-              <div className="border border-black rounded-full p-3 bg-white">
+              <div className={`border  border-black rounded-full p-3 bg-white ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
                 <ArrowUpRight className="w-4 h-4  md:w-8 md:h-8 primary-color" />
               </div>
             </div>
