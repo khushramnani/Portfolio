@@ -1,7 +1,7 @@
 import gsap from 'gsap';
 import { ArrowUpRight } from 'lucide-react';
 import { useRef, useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import CustomCursor from '../components/CustomCursor'; // Import the new CustomCursor component
 
 type Props = {
@@ -11,6 +11,7 @@ type Props = {
   category: string;
   liveLink?: string;
   hoverBg: string;
+  name: string; 
   onHover: (color: string) => void;
   onLeave: () => void;
 };
@@ -24,12 +25,13 @@ const ProjectCard = ({
   hoverBg,
   onHover,
   onLeave,
+  name
 }: Props) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [cursorPos, setCursorPos] = useState({ x: -1000, y: -1000 }); // Start off-screen
-
+  const navigate = useNavigate();
   // Preload main image
   useEffect(() => {
     const img = new Image();
@@ -92,12 +94,20 @@ const ProjectCard = ({
     }
   };
 
+  const onClick=()=>{
+    if (!liveLink) {
+      return; 
+    }
+   navigate(`/projects/${name}`);
+  }
+
   return (
     <>
-      <NavLink
-        to={'https://' + liveLink || ''}
-        target="_blank"
-        rel="noreferrer"
+      <main
+        // to={'https://' + liveLink || ''}
+        // target="_blank"
+        // rel="noreferrer"
+        onClick={onClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onMouseMove={handleMouseMove}
@@ -128,7 +138,7 @@ const ProjectCard = ({
             </div>
           </div>
         </div>
-      </NavLink>
+      </main>
       {/* Only show CustomCursor on desktop screens */}
       {isHovered && window.innerWidth >= 1024 && <CustomCursor images={images} liveLink={liveLink} x={cursorPos.x} y={cursorPos.y} />}
     </>

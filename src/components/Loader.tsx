@@ -69,8 +69,8 @@ const Loader = ({
     <div className='loader h-[90vh] flex items-center justify-center w-full'>
         <div className='loader-inner flex flex-col text-white gap-3 items-center justify-center'>
             
-            <span className="headings-regular space-x-1 gap-2 text-5xl flex relative" >
-                <span>{mainText} <span className={`${highlightSecondText ? 'playwrite-it-moderna-cursive italic' : "general-text" }  text-green-500 text-5xl`}>{secondText? secondText : ""}</span></span>
+            <span className="headings-regular space-x-1 gap-2 text-3xl md:text-5xl flex relative" >
+                <span>{mainText} <span className={`${highlightSecondText ? 'playwrite-it-moderna-cursive italic' : "general-text" }  text-green-500 text-3xl md:text-5xl`}>{secondText? secondText : ""}</span></span>
                 <span
                   className={`inline-block ${highlightWaitingText ? 'playwrite-it-moderna-cursive italic text-green-500' : 'text-white'}`}
                   ref={waitingTextRef}

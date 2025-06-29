@@ -17,6 +17,7 @@ const Project = () => {
 
   // Project page has white background, so text should be dark
   useEffect(() => {
+    window.scrollTo(0, 0);
     setIsDarkBackground(false);
   }, [setIsDarkBackground]);
 
@@ -24,6 +25,8 @@ const Project = () => {
     const timer = setTimeout(() => setIsLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
+
+
 
   useGSAP(() => {
     const cards = gsap.utils.toArray(".project-card");
@@ -55,11 +58,11 @@ const Project = () => {
         mainText="Khush's" 
         secondText=""
         waitingText="Projects"
-        highlightSecondText={false}
+        highlightSecondText={true}
         highlightWaitingText={true}
       />
 
-    {<main className="bg-white w-full h-full">
+    {<main  className="bg-white w-full h-full">
       <section className="px-4 md:px-16 mb-8 md:mb:0 lg:px-32 mt-16 md:mt-32">
         <div className="flex flex-col items-start justify-start">
           <h1 className="text-3xl md:text-4xl lg:text-7xl font-bold leading-tight">

@@ -56,9 +56,15 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  useGSAP(() => {
+    const mainElement = document.getElementById('main');
+    gsap.fromTo(mainElement, { opacity: 0 , y: 100 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" });
+    }, []);
   
   useGSAP(
     () => {
+      
+
       if (!isLoading && typedRef.current) {
         // Create SplitText instance
         const split = new SplitText(typedRef.current, {
@@ -66,13 +72,15 @@ const Home = () => {
           charsClass: 'split-char',
         });
 
+        
+
 
         gsap.set(split.chars, { opacity: 0 });
 
 
         gsap.to(split.chars, {
           opacity: 1,
-          duration: .75,
+          duration: .80,
           stagger: 0.1, // Adjust for typing speed
           delay: 2,
           ease: 'none',
@@ -87,7 +95,7 @@ const Home = () => {
     <>
       <Loader isLoading={isLoading} />
       {!isLoading && (
-        <main className="w-screen pt-16 text-white md:text-black overflow-hidden bg-black md:bg-white">
+        <main id="main" className="w-screen pt-16 text-white md:text-black overflow-hidden bg-black md:bg-white">
           <section className="flex bg-black md:bg-white mt-8 md:mt-16 flex-col px-4 md:px-16">
             {/* Mobile Layout: Creative Software Developer together, then availability + corner icon */}
             <div className="block md:hidden">

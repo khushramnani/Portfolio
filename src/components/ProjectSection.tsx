@@ -1,7 +1,7 @@
 import ProjectCard from '../components/ProjectCard';
 import { MoveDownLeft } from 'lucide-react';
 import ProjectPrev1 from '../assets/AnonovaPreview.png';
-
+import {projects} from '../components/projectsection/projectData'
 const ProjectSection = ({ onHover, onLeave }: { onHover: (color: string) => void; onLeave: () => void }) => {
   // Example array of images for each project
   const projectImages = {
@@ -60,6 +60,7 @@ const ProjectSection = ({ onHover, onLeave }: { onHover: (color: string) => void
           <div className="h-[50vh] md:h-[70vh] lg:h-[90vh] w-full lg:w-[50%]">
             <ProjectCard
               title="Anonova"
+              name={projects[0].name}
               image={"https://res.cloudinary.com/dql9uwmjx/image/upload/v1751174284/Project_Mokups_htsjvq.png"}
               images={projectImages.anonova}
               category="Web App, AI"
@@ -71,7 +72,9 @@ const ProjectSection = ({ onHover, onLeave }: { onHover: (color: string) => void
           </div>
           <div className="h-[50vh] md:h-[60vh] lg:h-[50vh] w-full lg:w-[40%] lg:mt-40">
             <ProjectCard
+              
               title="28-Media – Digital Marketing Agency"
+              name={projects[4].name}
               image="https://res.cloudinary.com/dql9uwmjx/image/upload/v1751174708/display.835f9d62_bqulbs.png"
               images={projectImages.twoeightmedia}
               category="Website"
@@ -88,6 +91,7 @@ const ProjectSection = ({ onHover, onLeave }: { onHover: (color: string) => void
           <div className="h-[50vh] md:h-[70vh] lg:h-[80vh] w-full lg:w-[60%]">
             <ProjectCard
               title="Zuno – AI Web App Builder"
+              name={projects[1].name}
               image={'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751180667/4_yq3tfy.png'}
               images={projectImages.zuno}
               category="AI, SaaS"
@@ -104,6 +108,7 @@ const ProjectSection = ({ onHover, onLeave }: { onHover: (color: string) => void
           <div className="h-[50vh] md:h-[60vh] lg:h-[60vh] w-full lg:w-[40%] lg:mt-96 order-2 lg:order-1">
             <ProjectCard
               title="Garvo Panoptic"
+              name={projects[3].name}
               image={'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751192879/6_riv4le.png'}
               images={projectImages.garvo}
               category="Static Website"
@@ -119,6 +124,7 @@ const ProjectSection = ({ onHover, onLeave }: { onHover: (color: string) => void
             
             <ProjectCard
               title="PageCrafter"
+              name={projects[2].name}
               image="https://res.cloudinary.com/dql9uwmjx/image/upload/v1751180726/5_gl6mr0.png"
               images={projectImages.pagecrafter}
               category="Website Builder"
