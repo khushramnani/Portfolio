@@ -72,7 +72,7 @@ const ProjectSection = ({ onHover, onLeave }: { onHover: (color: string) => void
           <div className="h-[50vh] md:h-[60vh] lg:h-[50vh] w-full lg:w-[40%] lg:mt-40">
             <ProjectCard
               
-              title="28-Media – Digital Marketing Agency"
+              title="28-Media – Branding & Ads"
               name={projects[4].name}
               image="https://res.cloudinary.com/dql9uwmjx/image/upload/v1751174708/display.835f9d62_bqulbs.png"
               images={projectImages.twoeightmedia}

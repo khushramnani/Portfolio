@@ -32,6 +32,7 @@ const ProjectCard = ({
   const [isHovered, setIsHovered] = useState(false);
   const [cursorPos, setCursorPos] = useState({ x: -1000, y: -1000 }); // Start off-screen
   const navigate = useNavigate();
+  const isDesktop = window.innerWidth >= 1024;
   // Preload main image
   useEffect(() => {
     const img = new Image();
@@ -40,25 +41,24 @@ const ProjectCard = ({
 
   // Handle mouse movement to track cursor position
   const handleMouseMove = (e: React.MouseEvent) => {
-    // Only handle mouse move on desktop
-    if (isHovered && window.innerWidth >= 1024) {
-      setCursorPos({ 
-        x: e.clientX, 
-        y: e.clientY 
-      });
-    }
+    if (!isDesktop || !isHovered) return;
+  setCursorPos({ x: e.clientX, y: e.clientY });
+    // if (isHovered && window.innerWidth >= 1024) {
+    //   setCursorPos({ 
+    //     x: e.clientX, 
+    //     y: e.clientY 
+    //   });
+    // }
   };
 
   const handleMouseEnter = (e: React.MouseEvent) => {
-    // Only enable hover effects on desktop
-    if (window.innerWidth >= 1024) {
-      setIsHovered(true);
-      // Set initial cursor position on enter
-      setCursorPos({ 
-        x: e.clientX, 
-        y: e.clientY 
+    if (!isDesktop) return;
+    setIsHovered(true);
+    
+    setCursorPos({ 
+      x: e.clientX, 
+      y: e.clientY 
       });
-    }
     
     if (cardRef.current) {
       gsap.to(imgRef.current, {
@@ -77,6 +77,7 @@ const ProjectCard = ({
   };
 
   const handleMouseLeave = () => {
+    if (!isDesktop) return;
     setIsHovered(false);
     // Move cursor off-screen when leaving
     setCursorPos({ x: -1000, y: -1000 });
@@ -130,9 +131,9 @@ const ProjectCard = ({
             </div>
             <div className="flex items-center justify-between gap-2">
               <div className="bg-white border px-2 p-2 md:p-4 border-gray-700 rounded-full flex  md:px-4 items-center justify-center">
-                <h3 className="text-base md:text-lg primary-color font-semibold">{title}</h3>
+                <h3 className="text-sm md:text-lg primary-color content-text font-semibold">{title}</h3>
               </div>
-              <div className={`border  border-black rounded-full p-3 bg-white ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
+              <div className={`border  border-black rounded-full p-3 bg-white ${isDesktop && isHovered ? 'opacity-100' : 'opacity-0'}`}>
                 <ArrowUpRight className="w-4 h-4  md:w-8 md:h-8 primary-color" />
               </div>
             </div>
@@ -140,7 +141,7 @@ const ProjectCard = ({
         </div>
       </main>
       {/* Only show CustomCursor on desktop screens */}
-      {isHovered && window.innerWidth >= 1024 && <CustomCursor images={images} liveLink={liveLink} x={cursorPos.x} y={cursorPos.y} />}
+      {isHovered && isDesktop && <CustomCursor images={images} liveLink={liveLink} x={cursorPos.x} y={cursorPos.y} />}
     </>
   );
 };

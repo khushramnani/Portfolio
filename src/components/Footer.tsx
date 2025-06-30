@@ -13,9 +13,9 @@ const Footer = () => {
             <a className={'hover:text-green-500 transition-colors duration-300'} href="/src/assets/Resume@khushramnani.pdf" download="Resume_Khush_Ramnani.pdf"><li>Resume</li></a>
           </div>
           <div id="socials" className='flex justify-center items-center gap-4 mt-0 md:mt-4'>
-            <NavLink to={""} ><Linkedin className="w-5 h-5 md:w-6 md:h-6 text-white hover:text-green-500 hover:scale-110 transition-all duration-300"/></NavLink>
-            <NavLink to={""}><Github className="w-5 h-5 md:w-6 md:h-6 text-white hover:text-green-500 hover:scale-110 transition-all duration-300"/></NavLink>
-            <NavLink to={""} ><Twitter className="w-5 h-5 md:w-6 md:h-6 text-white hover:text-green-500 hover:scale-110 transition-all duration-300"/></NavLink>
+            <NavLink to={"https://www.linkedin.com/in/khushramnani/"} target="_blank" ><Linkedin className="w-5 h-5 md:w-6 md:h-6 text-white hover:text-green-500 hover:scale-110 transition-all duration-300"/></NavLink>
+            <NavLink to={"https://github.com/khushramnani"} target="_blank"><Github className="w-5 h-5 md:w-6 md:h-6 text-white hover:text-green-500 hover:scale-110 transition-all duration-300"/></NavLink>
+            <NavLink to={"https://twitter.com/khushramnani"} target="_blank" ><Twitter className="w-5 h-5 md:w-6 md:h-6 text-white hover:text-green-500 hover:scale-110 transition-all duration-300"/></NavLink>
           </div>
         </nav>
 

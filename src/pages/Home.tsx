@@ -8,7 +8,7 @@ import SpreatorImg from '../assets/rip.f6d7c4dd.svg'
 
 import ProjectSection from '../components/ProjectSection';
 import { techStack } from '../TechStack';
-
+import useLocalTime from '../hooks/useLocalTime';
 import BubblePack from '../components/TechBubble';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -19,9 +19,10 @@ const Home = () => {
   const typedRefMobile = useRef<HTMLSpanElement>(null);
   const typedRefDesktop = useRef<HTMLSpanElement>(null);
   const { setIsDarkBackground } = useTheme();
-
+  const localTime = useLocalTime();
+  const isDesktop = window.innerWidth >= 1024;
   const handleHover = (color: string) => {
-    if (window.innerWidth >= 768) {
+    if (isDesktop) {
       gsap.to(".global-bg", { backgroundColor: color, duration: 0.5 });
     }
   };
@@ -45,6 +46,7 @@ const Home = () => {
       window.addEventListener('resize', checkBackground);
       return () => window.removeEventListener('resize', checkBackground);
     }
+    window.scrollTo(0, 0);
   }, [isLoading, setIsDarkBackground]);
 
 
@@ -147,7 +149,7 @@ const Home = () => {
                   </span>
                   <span className="flex flex-col mt-2">
                     <span>My local Time</span>
-                    <span>23:05 GMT (+5:30)</span>
+                    <span>{localTime}</span>
                   </span>
                 </span>
               </div>
@@ -162,12 +164,12 @@ const Home = () => {
                 </span>
                 <span className="availability w-[30%] flex flex-row items-start justify-between lg:mt-8 gap-4 h-16 text-right pr-8 text-sm font-mono text-gray-600">
                   <span className="flex flex-col text-start">
-                    <span>Currently Available FOR</span>
-                    <span>Freelance Worldwide</span>
+                    <span>Open to Opportunities</span>
+                    <span>Freelance & Remote</span>
                   </span>
                   <span className="flex flex-col text-start">
                     <span>My local Time</span>
-                    <span>23:05 GMT (+5:30)</span>
+                    <span>{localTime}</span>
                   </span>
                 </span>
               </div>
