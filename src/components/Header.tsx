@@ -37,15 +37,15 @@ const Header = () => {
         </NavLink>
         
         <a 
-          // href="/src/assets/Resume@khushramnani.pdf"
-            href="#"
-  onClick={(e) => {
-    e.preventDefault();
-    alert("Resume is currently being updated.");
-  }}
-  title='Updating..'
-          // download="Resume_Khush_Ramnani.pdf"
-          className={`text-sm md:text-lg ${textColor} cursor-not-allowed relative group transition-colors duration-300 ${hoverColor}`}
+          href="/src/assets/Resume@khushramnani.pdf"
+            // href="/src/assets/Resume#khushramnani.pdf"
+  // onClick={(e) => {
+  //   e.preventDefault();
+  //   alert("Resume is currently being updated.");
+  // }}
+  title='Download Resume'
+          download="Resume_Khush_Ramnani.pdf"
+          className={`text-sm md:text-lg ${textColor} cursor-pointer relative group transition-colors duration-300 ${hoverColor}`}
         >
           Resume
           <span className={`absolute -bottom-1 left-0 w-0 h-0.5 ${isDarkBackground ? 'bg-green-400' : 'bg-green-600'} transition-all duration-300 group-hover:w-full`}></span>
