@@ -69,36 +69,32 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom vertical scrollbar */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
-  background: transparent;
 }
 
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 
+.my-scroll-container {
+  background-color: transparent; /* Ensure the scrollbar track is transparent */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #22c55e transparent; /* For Firefox */
+  
+}
+
 ::-webkit-scrollbar-thumb {
-  background: #22c55e; /* Green color */
-  border-radius: 4px;
-  transition: background 0.3s ease;
-  border: none;
+  background-color: #22c55e; /* Tailwind green-500 */
+  border-radius: 10px;
+  
+  border: 2px solid transparent; /* Prevent background from bleeding through */
+  background-clip: content-box;   /* Ensures proper clipping */
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #16a34a; /* Darker green on hover */
-}
-
-/* Firefox scrollbar */
-html {
+/* * {
   scrollbar-width: thin;
   scrollbar-color: #22c55e rgba(0,0,0,0);
-}
-
-/* For better browser support */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #22c55e rgba(0,0,0,0);
-}
+} */
 
