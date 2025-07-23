@@ -37,14 +37,14 @@ const Header = () => {
         </NavLink>
         
         <a 
-          href="/src/assets/Resume@khushramnani.pdf"
+          href="/Resume@Khush_Ramnani.pdf"
             // href="/src/assets/Resume#khushramnani.pdf"
   // onClick={(e) => {
   //   e.preventDefault();
   //   alert("Resume is currently being updated.");
   // }}
   title='Download Resume'
-          download="Resume_Khush_Ramnani.pdf"
+          download="Resume@Khush_Ramnani.pdf"
           className={`text-sm md:text-lg ${textColor} cursor-pointer relative group transition-colors duration-300 ${hoverColor}`}
         >
           Resume

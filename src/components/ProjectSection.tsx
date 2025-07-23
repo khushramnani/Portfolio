@@ -19,7 +19,13 @@ const ProjectSection = ({ onHover, onLeave }: { onHover: (color: string) => void
       'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190001/pricingpage_ielont.png',
     ],
     twoeightmedia: [
-      'https://res.cloudinary.com/dql9uwmjx/image/upload/c_crop,ar_1:1/v1751183381/coming-soon_qy8xfc.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1753254604/Hero_s1xcc6.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1753254604/what-we-do_md2esk.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1753254604/services_kmwdji.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1753254605/CTA_ci9os9.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1753254605/testimonials_vtkusl.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1753254603/cta-branding_mm5foi.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1753254604/footer_eks4ct.png',
     ],
     pagecrafter: [
       'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190051/main-landing_yvlp00.png',
@@ -28,11 +34,13 @@ const ProjectSection = ({ onHover, onLeave }: { onHover: (color: string) => void
       'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190047/BuildArea2_y2ujfl.png',
       'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190054/BuildArea_upukud.png'
     ],
-    garvo: [
-      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190069/Screenshot_2025-06-29_130135_kzlchn.png',
-      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190066/Screenshot_2025-06-29_125954_h8aprj.png',
-      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190064/Screenshot_2025-06-29_130057_mualqr.png',
-      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751190063/Screenshot_2025-06-29_130223_u9jyyu.png'
+    Habiyo: [
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1753254708/image1_sil96q.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1753254707/image3_lz2yig.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1753254707/image3_lz2yig.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1753254710/image4_vfrjw4.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1753254710/image4_vfrjw4.png',
+      'https://res.cloudinary.com/dql9uwmjx/image/upload/v1753254711/image5_kqqvht.png'
     ]
   };
 
@@ -72,12 +80,12 @@ const ProjectSection = ({ onHover, onLeave }: { onHover: (color: string) => void
           <div className="h-[50vh] md:h-[60vh] lg:h-[50vh] w-full lg:w-[40%] lg:mt-40">
             <ProjectCard
               
-              title="28-Media – Branding & Ads"
-              name={projects[4].name}
-              image="https://res.cloudinary.com/dql9uwmjx/image/upload/v1751174708/display.835f9d62_bqulbs.png"
-              images={projectImages.twoeightmedia}
-              category="Website"
-              liveLink="https://28-media.com"
+              title="Habiyo"
+              name={projects[3].name}
+              image="https://res.cloudinary.com/dql9uwmjx/image/upload/v1753254687/YOUR_DAILY_DOSE_OF_HABIT_n4v5oa.png"
+              images={projectImages.Habiyo}
+              category="Mobile App"
+              liveLink="https://github.com/khushramnani/Habiyo"
               hoverBg="#FF99A8"
               onHover={onHover}
               onLeave={onLeave}
@@ -106,12 +114,12 @@ const ProjectSection = ({ onHover, onLeave }: { onHover: (color: string) => void
         <div className="flex flex-col lg:flex-row w-full items-center justify-center lg:justify-around gap-8">
           <div className="h-[50vh] md:h-[60vh] lg:h-[60vh] w-full lg:w-[40%] lg:mt-96 order-2 lg:order-1">
             <ProjectCard
-              title="Garvo Panoptic"
-              name={projects[3].name}
-              image={'https://res.cloudinary.com/dql9uwmjx/image/upload/v1751192879/6_riv4le.png'}
-              images={projectImages.garvo}
+              title="28-Media – Branding & Ads"
+              name={projects[4].name}
+              image={'https://res.cloudinary.com/dql9uwmjx/image/upload/v1753254631/Project_Mokups_3_u4cyqe.png'}
+              images={projectImages.twoeightmedia}
               category="Static Website"
-              liveLink="GarvoPanoptic.com"
+              liveLink="28-media.com"
               // hoverBg="#e0f7fa"
               hoverBg="#FFBC99"
               onHover={onHover}
